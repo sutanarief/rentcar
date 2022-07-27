@@ -1,0 +1,70 @@
+import React from 'react'
+import {
+  Container,
+  Col,
+  Row
+} from 'reactstrap'
+import CustomCard from './CustomCard'
+
+const Content = () => {
+  const car = [
+    {
+      width: '100px',
+      height: '100px',
+      title: 'Hemat dan Murah',
+      text: 'Kami memberikan anda harga yang terbaik',
+      img: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzUycHQiIGhlaWdodD0iNzUycHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDc1MiA3NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8ZGVmcz4KICA8Y2xpcFBhdGggaWQ9ImEiPgogICA8cGF0aCBkPSJtMTM5LjIxIDEzOS4yMWg0NzMuNTh2NDczLjU4aC00NzMuNTh6Ii8+CiAgPC9jbGlwUGF0aD4KIDwvZGVmcz4KIDxnIGNsaXAtcGF0aD0idXJsKCNhKSI+CiAgPHBhdGggZD0ibTQ0MS45NyA2MDEuMjdjLTE1LjQ2NSAxNS4zNjMtNDAuNDI2IDE1LjM2My01NS43ODUgMGwtMjE3LjMyLTIwMy44MmMtMTIuMTY0LTExLjQwMi0yNi42MzctMzIuOTkyLTI3LjY4NC00OS42MTMtMi43ODEyLTQ0Ljk3My0wLjgxMjUtMTMxLjA5IDAuNTUwNzgtMTc2LjczIDAuNDk2MDktMTYuNjYgMTQuNDY5LTMwLjYwNSAzMS4xNDUtMzAuOTczIDU4LjMyOC0xLjM3NSAxODEuOTEtMi44MjAzIDE5My4zOSA4LjY3NThsMjM5LjI5IDIxNi41MWMxNS4zNjMgMTUuMzc1IDEuNDQxNCA1NC4yNjYtMTQuMDIzIDY5LjczNHptLTE5MC40My0zOTUuMDNjLTEzLjA1NS0xMi45ODgtMzQuMTMzLTEyLjk4OC00Ny4xNiAwLTEzLjAwNCAxMy4wNTUtMTMuMDA0IDM0LjEwNSAwIDQ3LjEyMSAxMy4wNTUgMTMuMDE2IDM0LjEzMyAxMy4wMTYgNDcuMTYgMCAxMy0xMy4wMTYgMTMtMzQuMDc4IDAtNDcuMTIxeiIvPgogPC9nPgo8L3N2Zz4K',
+      style: {
+        transform: 'scaleX(-1)'
+      },
+      button: false
+    },
+    {
+      width: '100px',
+      height: '100px',
+      title: 'Pemesanan Mudah',
+      text: 'Pemesanan Mudah tidak ribet, pelayanan kami 24/7',
+      img: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzUycHQiIGhlaWdodD0iNzUycHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDc1MiA3NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8cGF0aCBkPSJtNjA1LjE1IDQ2NC4xdi0xLjA2MjVjLTAuMTE3MTktNy4zODY3LTIuOTg4My0xNC40NjEtOC4wNDY5LTE5Ljg0NC01LjA1NDctNS4zODI4LTExLjk0MS04LjY4MzYtMTkuMzAxLTkuMjYxNy0yNC40NDUtMS44NjMzLTQ4LjUzOS02LjkxOC03MS42NzYtMTUuMDI3LTUuMjM0NC0xLjg2NzItMTAuODkxLTIuMjEwOS0xNi4zMTItMC45ODgyOC01LjQyMTkgMS4yMTg4LTEwLjM4NyAzLjk0OTItMTQuMzE2IDcuODc4OWwtNDMuNzI3IDQzLjI0MnYwLjAwMzkwNmMtMi40OTYxIDIuNTI3My01Ljc0NjEgNC4xNzU4LTkuMjYxNyA0LjcwMzEtMy41MTE3IDAuNTIzNDQtNy4xMDE2LTAuMTA1NDctMTAuMjI3LTEuNzk2OS01Ni4zNTktMjkuNzg5LTEwMi40NC03NS44NjMtMTMyLjIzLTEzMi4yMi0xLjY5MTQtMy4xMjUtMi4zMjQyLTYuNzEwOS0xLjgwMDgtMTAuMjI3IDAuNTIzNDQtMy41MTU2IDIuMTcxOS02Ljc2MTcgNC43MDMxLTkuMjYxN2w0My4yNDItNDMuNzIzdjAuMDAzOTA2YzMuOTI1OC0zLjkzMzYgNi42NjAyLTguODk4NCA3Ljg3NS0xNC4zMiAxLjIxNDgtNS40MTggMC44NjcxOS0xMS4wNzQtMS4wMDM5LTE2LjMwNS04LjEwOTQtMjMuMTM3LTEzLjE1Mi00Ny4yMzQtMTUuMDA0LTcxLjY4LTAuNTg5ODQtNy41MzkxLTQuMDMxMi0xNC41NjYtOS42Mjg5LTE5LjY1Mi01LjU5NzctNS4wODU5LTEyLjkyMi03Ljg0MzgtMjAuNDgtNy43MTA5bC0xMTAuNTUgMi4xMDU1Yy03LjI4NTIgMC4xMjg5MS0xNC4yNjYgMi45NDUzLTE5LjYwMiA3LjkwMjMtNS4zMzU5IDQuOTYwOS04LjY1NjIgMTEuNzE5LTkuMzE2NCAxOC45NzMtNS4wNzAzIDU3LjM4NyAyLjU5NzcgMTE1LjE4IDIyLjQ1NyAxNjkuMjYgMTkuODU1IDU0LjA3NCA1MS40MTQgMTAzLjEgOTIuNDE4IDE0My41NiAzNi4zMDUgMzYuNzE5IDc5LjQ5NiA2NS45MSAxMjcuMTEgODUuOTAyIDQ3LjYwNSAxOS45OTIgOTguNjkxIDMwLjM5NSAxNTAuMzMgMzAuNjAyIDExLjgwNSAwIDIzLjU5NC0wLjU0Njg4IDM1LjM2Ny0xLjY0MDZsLTAuMDAzOTA2IDAuMDAzOTA2YzcuMjUzOS0wLjY2Nzk3IDE0LjAwNC0zLjk4ODMgMTguOTYxLTkuMzIwMyA0Ljk1Ny01LjMzNTkgNy43Njk1LTEyLjMxMiA3LjkwMjMtMTkuNTk0eiIgZmlsbC1ydWxlPSJldmVub2RkIi8+Cjwvc3ZnPgo=',
+      style: {},
+      button: false
+    },
+    {
+      width: '100px',
+      height: '100px',
+      title: 'Aman & Terpercaya',
+      text: 'Mobil selalu dalam kondisi prima, supir ramah dan tersedia pilihan jenis kendaraan',
+      img: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzUycHQiIGhlaWdodD0iNzUycHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDc1MiA3NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8Zz4KICA8cGF0aCBkPSJtMzcyLjIxIDM2Mi4yN2MwLjk0NTMxIDAuNDcyNjYgMi4zNjcyIDAuOTQ1MzEgMy43ODkxIDAuOTQ1MzFzMi4zNjcyLTAuNDcyNjYgMy43ODkxLTAuOTQ1MzFjMy4zMTY0LTEuNDIxOSA4NS43MTktMzguODMyIDg1LjcxOS0xNjAuNTQgMC00LjczNDQtMy4zMTY0LTguNTIzNC04LjA1MDgtOC45OTYxLTQ3LjgzMi00LjczNDQtNzQuODI0LTI2LjA0Ny03NS4zMDEtMjYuNTItMy4zMTY0LTIuODM5OC04LjA1MDgtMi44Mzk4LTExLjg0IDAtMC40NzI2NiAwLTI2Ljk5MiAyMS43ODUtNzUuMzAxIDI2LjUyLTQuNzM0NCAwLjQ3MjY2LTguMDUwOCA0LjI2MTctOC4wNTA4IDguOTk2MS0wLjQ2ODc1IDEyMS43MSA4MS45MzQgMTU5LjEyIDg1LjI0NiAxNjAuNTR6bTMuNzg5MS0xNDcuNzVjMjUuMTAyIDAgNDUuOTM4IDIwLjM2MyA0NS45MzggNDUuOTM4IDAgMjUuMTAyLTIwLjM2MyA0NS45MzgtNDUuOTM4IDQ1LjkzOC0yNS4xMDIgMC00NS45MzgtMjAuMzYzLTQ1LjkzOC00NS45MzggMC0yNS4xMDIgMjAuODQtNDUuOTM4IDQ1LjkzOC00NS45Mzh6Ii8+CiAgPHBhdGggZD0ibTM2NC42NCAyNzkuODZjMS40MjE5IDEuNDIxOSAzLjc4OTEgMi4zNjcyIDUuNjgzNiAyLjM2NzIgMS44OTQ1IDAgNC4yNjE3LTAuOTQ1MzEgNS42ODM2LTIuMzY3MmwyMy4yMDctMjMuMjA3YzMuMzE2NC0zLjMxNjQgMy4zMTY0LTguNTIzNCAwLTExLjM2Ny0zLjMxNjQtMy4zMTY0LTguNTIzNC0zLjMxNjQtMTEuMzY3IDBsLTE3LjUyMyAxNy4wNTUtNi42Mjg5LTYuNjI4OWMtMy4zMTY0LTMuMzE2NC04LjUyMzQtMy4zMTY0LTExLjM2NyAwLTMuMzE2NCAzLjMxNjQtMy4zMTY0IDguNTIzNCAwIDExLjM2N3oiLz4KICA8cGF0aCBkPSJtNTkwLjA2IDQxMy40MWMtMTIuMzEyLTI4Ljg4Ny01Ni4zNTUtMjQuNjI1LTczLjg3OS0xOS40MTgtNy41NzgxIDIuMzY3Mi0xMi43ODUgNi42Mjg5LTE3LjUyMyAxMS44NC01LjIxMDkgNS4yMTA5LTUxLjE0OCA1My4wNDMtNTEuMTQ4IDUzLjA0M2wtNTQuOTM0IDIwLjgzNmMtMTMuMjYyIDUuMjEwOS0yMC4zNjMgMTkuODkxLTE1LjE1NiAzMy42MjUgMy43ODkxIDEwLjQxOCAxMy43MzQgMTYuNTc0IDI0LjE1MiAxNi41NzQgMi44Mzk4IDAgNi4xNTYyLTAuNDcyNjYgOC45OTYxLTEuODk0NWw2MC42MTctMjMuMjA3YzMuNzg5MS0xLjQyMTkgNi42Mjg5LTMuMzE2NCA5LjQ3MjctNi4xNTYybDQuMjYxNy00LjczNDRjMC40NzI2NiAzMC43ODEgNC43MzQ0IDgzLjM1MiA1LjIxMDkgODYuMTkxIDAuNDcyNjYgNC43MzQ0IDIuODM5OCA3LjU3ODEgOC41MjM0IDcuNTc4MWg5My4yOTdjNC43MzQ0IDAgOC4wNTA4LTMuNzg5MSA4LjA1MDgtOC41MjM0IDAuOTUzMTItNTYuMzU1IDMuMzIwMy0xMzUuNDUtOS45NDE0LTE2NS43NXoiLz4KICA8cGF0aCBkPSJtNTkyLjkgMzIwLjEyYzAgMzEuMzg3LTI1LjQ0NSA1Ni44MzItNTYuODMyIDU2LjgzMi0zMS4zODMgMC01Ni44MjgtMjUuNDQ1LTU2LjgyOC01Ni44MzIgMC0zMS4zODMgMjUuNDQ1LTU2LjgyOCA1Ni44MjgtNTYuODI4IDMxLjM4NyAwIDU2LjgzMiAyNS40NDUgNTYuODMyIDU2LjgyOCIvPgogIDxwYXRoIGQ9Im0yNzIuNzYgMzIwLjEyYzAgMzEuMzg3LTI1LjQ0NSA1Ni44MzItNTYuODMyIDU2LjgzMi0zMS4zODcgMC01Ni44MjgtMjUuNDQ1LTU2LjgyOC01Ni44MzIgMC0zMS4zODMgMjUuNDQxLTU2LjgyOCA1Ni44MjgtNTYuODI4IDMxLjM4NyAwIDU2LjgzMiAyNS40NDUgNTYuODMyIDU2LjgyOCIvPgogIDxwYXRoIGQ9Im0zOTEuNjMgNDI3LjYyYy02LjYyODktMTIuNzg1LTIyLjI1OC0xNy45OTYtMzUuMDQ3LTExLjM2N2wtNDguMzA1IDI0LjYyNXMtMjYuOTkyLTE4LjQ2OS0zNS41Mi0yNS4xMDJjLTUuNjgzNi0zLjc4OTEtMjEuMzEyLTE2LjU3NC0zNi45MzgtMjIuMjU4LTE3LjA1MS01LjY4MzYtNjEuNTY2LTkuNDcyNy03My44NzkgMTkuNDE4LTEzLjI1OCAzMC43ODUtMTAuODkxIDEwOS44OC0xMC40MTggMTY2LjcgMCA0LjczNDQgMy4zMTY0IDguNTIzNCA4LjA1MDggOC41MjM0aDkzLjI5N2M1LjY4MzYgMCA3LjU3ODEtMy4zMTY0IDguNTIzNC03LjU3ODEgMC40NzI2Ni0yLjgzOTggNS42ODM2LTY2Ljc3MyA1LjIxMDktOTUuMTkxdi05Ljk0NTNsMjQuNjI1IDE2LjU3NGM0LjI2MTcgMi44Mzk4IDkuNDcyNyA0LjI2MTcgMTQuNjggNC4yNjE3IDQuMjYxNyAwIDguMDUwOC0wLjk0NTMxIDExLjg0LTIuODM5OGw2Mi4wMzktMzEuNzNjMTMuMjYyLTUuNjc5NyAxNy45OTYtMjEuMzA1IDExLjg0LTM0LjA5NHoiLz4KIDwvZz4KPC9zdmc+Cg==',
+      style: {},
+      button: false
+    }
+  ]
+  return (
+    <>
+      <Container fluid style={{backgroundColor: '#f5f4f2'}}>
+        <Col>
+        <Row>
+          <Col className='pt-5'>
+            <h1 style={{ textAlign: 'center'}} className='mb-3'>Pusat Rental Mobil Terbaik & Murah</h1>
+            <p style={{textAlign: 'justify'}}>RentCarIn adalah perusahaan Rental Mobil Jakarta berpengalaman yang telah beroperasi di  beberapa kota di Indonesia selama lebih dari satu dekade. Kami melayani semua jenis kebutuhan penyewaan mobil, mulai dari penggunaan pribadi atau untuk perusahaan. Untuk jangka pendek dan jangka panjang dengan harga kompetitif. Kami menyediakan berbagai armada dalam keadaan prima, bersih dan wangi diantaranya: Avanza, Innova, Xpander, Elf, Toyota Hiace, dan lainnya. Silakan hubungi kami untuk informasi lebih lanjut.</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col className='d-flex justify-content-center mt-3'>
+            <Row>
+              {
+                car.map((x) => (
+                  <Col>
+                    <CustomCard data={x}/>
+                  </Col>
+                ))
+              }
+            </Row>
+          </Col>
+        </Row>
+        </Col>
+      </Container>
+    </>
+  )
+}
+
+export default Content

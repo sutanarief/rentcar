@@ -7,9 +7,7 @@ import {
   Collapse,
   NavItem,
   NavLink,
-  Container,
-  Row,
-  Col
+  Container
 } from 'reactstrap'
 
 const links = ['Home', 'Tentang Kami', 'Rental Mobil', 'Kontak Kami']

@@ -3,10 +3,8 @@ import {
   Card,
   CardBody,
   CardTitle,
-  CardSubtitle,
   CardText,
-  Button,
-  Container
+  Button
 } from 'reactstrap'
 
 const CustomCard = (props) => {
@@ -22,7 +20,7 @@ const CustomCard = (props) => {
     >
         {props.data && (
             <img 
-              alt='Card Image'
+              alt='Car in the house'
               width={props.data?.width || '100%'}
               height={props.data?.height || '100%'}
               className='align-self-center'

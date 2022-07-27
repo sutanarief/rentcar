@@ -3,9 +3,7 @@ import {
   Container,
   CarouselItem,
   CarouselCaption,
-  Carousel,
-  CarouselIndicators,
-  CarouselControl
+  Carousel
 } from 'reactstrap'
 import About from '../components/About';
 import Agreement from '../components/Agreement';
@@ -60,13 +58,6 @@ const Main = () => {
     const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   }
-
-  const goToIndex = (newIndex) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
-  }
-
-  
 
   const slides = items.map((item) => {
     return (

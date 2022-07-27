@@ -1,8 +1,6 @@
 import React from 'react'
 import {
-  Container,
-  Row,
-  Col
+  Container
 } from 'reactstrap'
 
 const Agreement = () => {
